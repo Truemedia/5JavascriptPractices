@@ -7,8 +7,8 @@
 */
 define([
 	"stache!templates/page", "i18n!nls/strings",
-	"jQuery"
-], function(template, nls, jQuery) {
+	"Bootstrap", "Backbone", "KO"
+], function(template, nls, jQuery, Backbone, ko) {
 	return App = {
 
 		/* Application startup method */

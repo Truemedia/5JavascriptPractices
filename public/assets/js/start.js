@@ -20,6 +20,12 @@ require.config({
         'jQuery': "libs/jquery.1.9.1.min",
         'Mustache': "libs/mustache.min",
 
+        'Backbone': "libs/backbone.min",
+        'Bootstrap': "libs/bootstrap.min",
+        'KO': "libs/knockout.min",
+        'Modernizr': "libs/modernizr.min",
+        'Underscore': "libs/underscore.min",
+
         // Core classes
         'App': "core/app"
     },
@@ -31,8 +37,22 @@ require.config({
 
     /* AMD backwards compatability */
     shim: {
+        'Backbone': {
+            deps: ['Underscore', 'jQuery'],
+            exports: 'Backbone'
+        },
+        'Bootstrap': {
+            deps: ['jQuery'],
+            exports: 'jQuery'
+        },
         'jQuery': {
             exports: 'jQuery'
+        },
+        'Modernizr': {
+            exports: 'Modernizr'
+        },
+        'Underscore': {
+            exports: '_'
         },
 
         // Inject core classes into autoloader

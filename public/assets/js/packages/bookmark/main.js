@@ -1,34 +1,52 @@
 
 define([
-	"stache!./templates/partial", "i18n!./nls/strings",
-	"jQuery"
-], function(template, nls, jQuery) {
+	"stache!./templates/partial", "i18n!./nls/strings", "Bootstrap", "Backbone", "KO"
+], function(template, nls, jQuery, Backbone, ko) {
 	return bookmark = {
 		trans: {}, // Translations
 
 		/* Initial load-up procedure if first time package is loaded */
 		init: function(options)
 		{		
-			// Load translations
 			this.trans = nls;
 		},
-			
-		/* Autoloading hook */
+
+	    /* Autoloading hook */
 	    load: function(element, options)
 	    {    	
-	        // Load the package onto current web-page
 	    	this.init(options);
-	    	this.view(element);
+			new this.view({el: element});
 	    },
+	        
+	    /* Data collection */
+	    collection: Backbone.Collection.extend({
+	        model: Backbone.Model.extend(),
+	        url: function() { return "http://localhost/5JavascriptPractices/public/assets/js/packages/bookmark/data.json"; },
+	        parse: function(data) { return data.items; }
+	    }),
+	        
+	    /* Append the HTML for this package to the DOM */
+	    view: Backbone.View.extend({
+	        initialize: function()
+	        {    	
+	            this.collection = new bookmark.collection();
+	            this.render();
+	        },
+	        render: function()
+	        {
+	        	var self = this;
+	            this.collection.fetch().done( function() {
+	            	var data = { trans: bookmark.trans };
+	            	self.$el.html( template(data) );
+	            	ko.applyBindings(new bookmark.ViewModel( self.collection.toJSON() ), this.el);
+	            });
+	        }
+	    }),
 
-	    /* Render the HTML for this package and append to the DOM */
-	    view: function(element)
-	    {
-			var data = {
-				"trans": this.trans 
-			};
-
-			jQuery(element).html( template(data) );	    	
-	    }
+	    /* ViewModel for this package */
+	    ViewModel: function(items)
+		{
+			this.bookmarks = ko.observableArray(items);
+		}
 	}
 });

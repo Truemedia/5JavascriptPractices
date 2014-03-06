@@ -1,0 +1,23 @@
+{
+    "identifier": "title",
+    "items": [
+        {
+        	"name": "Google",
+        	"url": "http://google.com",
+        	"category": "Search engine",
+        	"description": "Description of Google"
+        },
+        {
+        	"name": "Facebook",
+        	"url": "http://facebook.com",
+        	"category": "Social Networking",
+        	"description": "Description of Facebook"
+        },
+        {
+        	"name": "Twitter",
+        	"url": "http://twitter.com",
+        	"category": "Social Networking",
+        	"description": "Description of Twitter"
+        }
+    ]
+}

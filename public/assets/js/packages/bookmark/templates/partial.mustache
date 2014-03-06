@@ -66,10 +66,14 @@
                     (123) 456-7890
                 </address>
                 <address>
-                    <strong>Full Name</strong><br>
-                    <a href="mailto:#">first.last@example.com</a>
+                    <strong>Bookmarks</strong>
+                    <ul data-bind="foreach: bookmarks">
+                        <li>
+                            <a href="" data-bind="text: name, attr: { href: url }"></a>
+                        </li>
+                    </ul>
                 </address>
             </form>
         </div>
     </div>
-</div>
+<name>
