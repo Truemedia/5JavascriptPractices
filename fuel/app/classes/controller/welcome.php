@@ -22,8 +22,17 @@
 class Controller_Welcome extends Controller
 {
 
-	// Layout template
-	public $layout = 'layout';
+	/**
+     * load the theme template, set the page title and the menu's
+     */
+    public function before()
+    {
+        // load the theme template
+        $this->theme = Theme::instance();
+
+        // set the page template
+        $this->theme->set_template('layouts/main.php');
+    }
 
 	/**
 	 * The basic welcome message
@@ -33,9 +42,23 @@ class Controller_Welcome extends Controller
 	 */
 	public function action_index()
 	{
-		//return Response::forge(View::forge($this->layout));
-		return View::forge('welcome/example.mustache', array('hello' => 'world', 'client' => 'server'));
+		$this->theme->set_partial('content', 'pages/example')->set( array('hello' => 'world', 'client' => 'server') );
 	}
+
+	/**
+     * keep the after() as standard as possible to allow custom responses from actions
+     */
+    public function after($response)
+    {
+        // If no response object was returned by the action,
+        if (empty($response) or  ! $response instanceof Response)
+        {
+            // render the defined template
+            $response = \Response::forge(\Theme::instance()->render());
+        }
+
+        return parent::after($response);
+    }
 
 	/**
 	 * A typical "Hello, Bob!" type example.  This uses a ViewModel to

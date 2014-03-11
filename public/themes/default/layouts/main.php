@@ -14,7 +14,5 @@
 		?>
 		<title>5 Javascript Practices</title>
 	</head>
-	<body id="layout">
-		<div data-package="bookmark"></div>
-	</body>
+	<body id="layout"><?php echo $partials['content']; ?></body>
 </html>
