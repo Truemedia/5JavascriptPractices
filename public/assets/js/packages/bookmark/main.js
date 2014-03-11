@@ -20,7 +20,6 @@ define([
 	        
 	    /* Data collection */
 	    collection: Backbone.Collection.extend({
-	        model: Backbone.Model.extend(),
 	        url: function() { return "http://localhost/5JavascriptPractices/public/assets/js/packages/bookmark/data.json"; },
 	        parse: function(data) { return data.items; }
 	    }),
@@ -29,7 +28,7 @@ define([
 	    view: Backbone.View.extend({
 	        initialize: function()
 	        {    	
-	            this.collection = new bookmark.collection();
+	            this.collection = new bookmark.collection({model: Backbone.Model.extend()});
 	            this.render();
 	        },
 	        render: function()

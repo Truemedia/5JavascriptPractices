@@ -33,7 +33,8 @@ class Controller_Welcome extends Controller
 	 */
 	public function action_index()
 	{
-		return Response::forge(View::forge($this->layout));
+		//return Response::forge(View::forge($this->layout));
+		return View::forge('welcome/example.mustache', array('hello' => 'world', 'client' => 'server'));
 	}
 
 	/**
