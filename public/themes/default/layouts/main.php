@@ -6,12 +6,8 @@
 <!DOCTYPE html>
 	<head>
 		<meta charset="UTF-8">
-		<?php
-			echo Asset::css('bootstrap.flatly.min.css');
-			echo Asset::js('libs/require.min.js', array(
-				'data-main' => Asset::get_file('start.js', 'js')
-			));
-		?>
+			<link rel="stylesheet" href="vendor/bootstrap/bootstrap.flatly.min.css" />
+			<script src="vendor/requirejs/require.min.js" data-main="start.js"></script>
 		<title>5 Javascript Practices</title>
 	</head>
 	<body id="layout"><?php echo $partials['content']; ?></body>

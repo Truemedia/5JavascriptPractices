@@ -11,20 +11,20 @@ require.config({
 
     paths: {
         // Require JS plugins
-        conditioner: "libs/conditioner.min",
-        i18n: "libs/require.i18n",
-        stache : "libs/require.stache",
-        text : "libs/require.text",
+        conditioner: "vendor/conditioner/conditioner.min",
+        i18n: "vendor/require/require.i18n",
+        stache : "vendor/require/require.stache",
+        text : "vendor/require/require.text",
 
         // Third party libraries
-        'jQuery': "libs/jquery.1.9.1.min",
-        'Mustache': "libs/mustache.min",
+        'jQuery': "vendor/jquery/jquery.1.9.1.min",
+        'Mustache': "vendor/mustache/mustache.min",
 
-        'Backbone': "libs/backbone.min",
-        'Bootstrap': "libs/bootstrap.min",
-        'KO': "libs/knockout.min",
-        'Modernizr': "libs/modernizr.min",
-        'Underscore': "libs/underscore.min",
+        'Backbone': "vendor/backbone/backbone.min",
+        'Bootstrap': "vendor/bootstrap/bootstrap.min",
+        'KO': "vendor/knockout/knockout.min",
+        'Modernizr': "vendor/modernizr/modernizr.min",
+        'Underscore': "vendor/underscore/underscore.min",
 
         // Core classes
         'App': "core/app"
